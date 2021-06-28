@@ -22,11 +22,34 @@ var Bread = () => {
 class GroceryListItem extends React.Component {
  constructor(props) {
    super(props);
+
+   this.state = {
+     hover: false
+   };
  }
 
+ onListItemHover1() {
+  this.setState({
+    hover: true
+  })
+  console.log(!this.state.isChecked)
+}
+
+onListItemHover2() {
+  this.setState({
+    hover: false
+  })
+  console.log(!this.state.isChecked)
+}
+
  render() {
+
+  var style = {
+    fontWeight: this.state.hover ? 'bold': 'normal'
+  };
+
    return(
-    <li>{this.props.list}</li>
+    <li style={style} onMouseEnter={this.onListItemHover1.bind(this)} onMouseLeave={this.onListItemHover2.bind(this)}>{this.props.list}</li>
    );
  }
 }
